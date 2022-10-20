@@ -5,12 +5,14 @@ namespace TractorsWithColor.Services
 {
     public class TractorsService : ITractorService
     {
-        private IList<Tractor> _tractors;
+        /*private IList<Tractor> _tractors;
 
         public TractorsService(IList<Tractor> tractors)
         {
             _tractors = tractors;
-        }
+        }*/
+
+        private static IList<Tractor> _tractors = new List<Tractor>();
 
         public Tractor AddTractor(PostTractorModel tractor)
         {
@@ -36,12 +38,14 @@ namespace TractorsWithColor.Services
 
         public List<Tractor> GetAllTractorsByColor(string color)
         {
-            throw new NotImplementedException();
+            var tractorOnColor = _tractors.Where(tractor => tractor.Color == color);
+            return tractorOnColor.ToList();
         }
 
-        public List<Tractor> GetTractorDetails(int tractorId)
+        public Tractor GetTractorDetails(int tractorId)
         {
-            throw new NotImplementedException();
+            var tractorOnId = _tractors.FirstOrDefault(tractor => tractor.Id == tractorId);
+            return tractorOnId;
         }
 
         public Tractor UpdateTractor(PutTractorModel putTractor)
@@ -54,7 +58,7 @@ namespace TractorsWithColor.Services
             if (_tractors.Count == 0)
                 return 1;
 
-            return _tractors.Max(teamMember => teamMember.Id) + 1;
+            return _tractors.Max(tractor => tractor.Id) + 1;
         }
     }
 }

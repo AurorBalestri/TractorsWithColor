@@ -15,8 +15,8 @@ Funzionalità obbligatorie:
 
 /Delete 
 
-			*Create, nome = AddTractor
-			-POST /tractor [FromBody] PostTractorModel
+										*Create, nome = AddTractor
+										-POST /tractor [FromBody] PostTractorModel
 
 			*GetDetail, nome = GetTractorDetails
 			-GET /tractor/{tractorId}

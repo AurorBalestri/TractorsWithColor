@@ -6,7 +6,7 @@ namespace TractorsWithColor.Services.Interfaces
     {
         public Tractor AddTractor(PostTractorModel postTractor);
 
-        public List<Tractor> GetTractorDetails(int tractorId);
+        public Tractor GetTractorDetails(int tractorId);
 
         public List<Tractor> GetAllTractorsByColor(string color);
 
