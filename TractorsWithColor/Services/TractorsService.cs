@@ -31,9 +31,11 @@ namespace TractorsWithColor.Services
             return TractorWithId;
         }
 
-        public void DeleteTractor(int tractorId)
+        public Tractor DeleteTractor(int tractorId)
         {
-            throw new NotImplementedException();
+            var tractorToDelete = _tractors.FirstOrDefault(tractor => tractor.Id == tractorId);
+            _tractors.Remove(tractorToDelete);
+            return tractorToDelete;
         }
 
         public List<Tractor> GetAllTractorsByColor(string color)
@@ -44,13 +46,20 @@ namespace TractorsWithColor.Services
 
         public Tractor GetTractorDetails(int tractorId)
         {
-            var tractorOnId = _tractors.FirstOrDefault(tractor => tractor.Id == tractorId);
-            return tractorOnId;
+            return _tractors.FirstOrDefault(tractor => tractor.Id == tractorId);
         }
 
-        public Tractor UpdateTractor(PutTractorModel putTractor)
+        public Tractor UpdateTractor(Tractor putTractor)
         {
-            throw new NotImplementedException();
+            foreach (var tractor in _tractors)
+            {
+                if(tractor.Id == putTractor.Id)
+                {
+                    tractor.Model = putTractor.Model;
+                    tractor.Color = putTractor.Color;
+                }
+            }   
+                return _tractors.FirstOrDefault(tractor => tractor.Id == putTractor.Id);
         }
 
         private int GetId()

@@ -50,5 +50,24 @@ namespace TractorsWithColor.Controllers
                 return Ok(tractorFetchedOnColor);
             }
         }
+
+        [HttpDelete("deletetractor/{id}")]
+        public IActionResult DeleteTractor(int id)
+        {
+            var tractorToBeDeleted = _tractorService.DeleteTractor(id);
+            return Ok(tractorToBeDeleted);
+        }
+
+        [HttpPut("modifytractor/{id}")]
+        public IActionResult UpdateTractor(int id,[FromBody] PostTractorModel tractor)
+        {
+            var tractorToUpdate = new Tractor();
+            tractorToUpdate.Id = id;
+            tractorToUpdate.Model = tractor.Model;
+            tractorToUpdate.Color = tractor.Color;
+
+            return Ok(_tractorService.UpdateTractor(tractorToUpdate));
+
+        }
     }
 }

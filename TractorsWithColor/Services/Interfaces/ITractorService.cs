@@ -10,9 +10,9 @@ namespace TractorsWithColor.Services.Interfaces
 
         public List<Tractor> GetAllTractorsByColor(string color);
 
-        public Tractor UpdateTractor(PutTractorModel putTractor);
+        public Tractor UpdateTractor(Tractor putTractor);
 
-        public void DeleteTractor(int tractorId);
+        public Tractor DeleteTractor(int tractorId);
 
     }
 }
