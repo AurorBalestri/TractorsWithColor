@@ -1,0 +1,49 @@
+﻿Trattore (with Colors!) 
+
+Persistenza semplice (non per forza su file) 
+
+
+Funzionalità obbligatorie:
+
+/Create 
+
+/GetDetail 
+
+/GetAllByFilter(color) 
+
+/Put 
+
+/Delete 
+
+			*Create, nome = AddTractor
+			-POST /tractor [FromBody] PostTractorModel
+
+			*GetDetail, nome = GetTractorDetails
+			-GET /tractor/{tractorId}
+
+			*GetAllByFilter, nome = GetAllTractorsByColor
+			/tractor?=color
+
+			*UpdateTractor, nome = UpdateTractor 
+			-PUT /tractor/{tractorId} PutTractorModel
+
+			*Delete, DeleteTractor
+			-DELETE /tractor/{tractorId}
+
+
+
+
+
+
+
+
+
+Funzionalità opzionali 
+
+Restful 
+
+Persistenza tosta (con file) 
+
+SearchByGadget 
+
+OrderTrattoriByNumberOfGadgets 
